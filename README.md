@@ -3,17 +3,6 @@
 TrajSeg is a training & inference codebase for video referring segmentation built on top of a LISA-style VLM and SAM/SAM2 visual backbones.  
 This repository focuses on **two-stage training** (image stage → video stage) and **uniform frame sampling** inference on Ref-Youtube-VOS / MeVIS / ReVOS.
 
-## What is included
-
-- `datasets/`: dataset loaders & transforms (image and video)
-- `model/`: LISA-style model, LLaVA components, SAM/SAM2 code and configs
-- `utils/`: dataset wrappers, collators, visualization utilities
-- `train_ds.py`: two-stage training entry
-- `inference_ytvos_uniform.py`, `inference_mevis_uniform.py`, `inference_revos_uniform.py`: inference scripts
-- `merge_lora_weights_and_save_hf_model.py`: merge LoRA weights and save a HF-style model folder
-
-Large data, checkpoints and outputs are intentionally **not** tracked by git (see `.gitignore`).
-
 ## Installation
 
 This project is typically run on Linux with CUDA GPUs.
