@@ -43,15 +43,13 @@ You need to download two key assets:
 - Download the official SAM2 checkpoint, then set `--sam2_checkpoint /path/to/sam2_hiera_large.pt`.  
 - The SAM2 config file is already in this repo: `model/sam2/sam2_configs/sam2_hiera_l.yaml` (use it via `--sam2_cfg`).
 
-You also need the **SAM ViT-H** checkpoint if you train with SAM (stage 1 uses `--vision_pretrained`):
-- Download: `sam_vit_h_4b8939.pth` from the Segment Anything official release.
 
 ## Data layout
 
 This repo supports two groups of datasets:
 
 - Stage 1 (image) datasets: semantic segmentation / referring segmentation / VQA / reasoning segmentation
-- Stage 2 (video) datasets: RVOS (Ref-Youtube-VOS, MeVIS, ReVOS) and optional tracking data
+- Stage 2 (video) datasets: RVOS (Ref-Youtube-VOS, MeVIS, ReVOS)
 
 We recommend the following structure (names can be adapted; pass paths via `--dataset_dir` and `--image_dir`):
 
@@ -178,9 +176,3 @@ The commands are analogous; only the dataset path argument changes:
 python inference_mevis_uniform.py --version /path/to/ckpt --mevis_path data/stage2_videos/MeVIS --output_dir /path/to/output_dir --ngpus 1 --llm_sample_frames 10
 python inference_revos_uniform.py --version /path/to/ckpt --revos_path data/stage2_videos/ReVOS --output_dir /path/to/output_dir --ngpus 1 --llm_sample_frames 10
 ```
-
-## Notes
-
-- This repo does **not** include any dataset contents or large checkpoints in git.
-- If you see OOM during inference on long videos, `inference_mevis_uniform.py` enables a `memory_efficient` mode when the video is long.
-
